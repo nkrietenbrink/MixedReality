@@ -11,24 +11,33 @@ public class Waypoints : MonoBehaviour {
     public float[] rotations;
     public bool repeat;
     public float WPradius;
-    public bool setActive;
+    public bool isAnimating;
 
     void Update()
     {
-        if(setActive) {
-        if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
-        {
-            current ++;
-            if (repeat && current >= waypoints.Length)
+        if(isAnimating) {
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+            if (Vector3.Distance(waypoints[current].transform.position, transform.position) < WPradius)
             {
-                current = 0;
+
+                transform.Rotate(0, rotations[current], 0);
+                    current++;
+
+                    if  (current >= waypoints.Length)
+                {
+                        if(repeat) {
+                            current = 0;
+                        
+                    } else {
+                        isAnimating = false;
+                    }
+                    }
+                            
             }
-            transform.Rotate(0, rotations[current], 0);
-        }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints[current].transform.position, Time.deltaTime * speed);
+        
        
 
 
-    }
+        }
     }
 }

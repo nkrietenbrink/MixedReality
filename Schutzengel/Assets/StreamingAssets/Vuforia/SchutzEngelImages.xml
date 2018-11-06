@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="map50" size="50.000000 32.397259" />
+    <ImageTarget name="ground" size="500.000000 405.198792" />
     <ImageTarget name="city500" size="500.000000 422.000000" />
+    <ImageTarget name="city2" size="250.000000 211.000000" />
     <ImageTarget name="fire-chief" size="25.000000 24.638889" />
   </Tracking>
 </QCARConfig>
