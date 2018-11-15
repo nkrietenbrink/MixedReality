@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Playables;
 using System.Collections;
 using Vuforia;
 
@@ -9,14 +10,16 @@ public class FirefighterTracker : MonoBehaviour, ITrackableEventHandler
 
 
     private GameObject fireCar;
+    private PlayableDirector timelineTree;
     private bool mShowGUIButton = false;
     private Rect mButtonRect = new Rect(50, 50, 120, 60);
     private Waypoints waypoint;
     void Start()
     {
         fireCar = GameObject.Find("fireCar");
+        timelineTree = GameObject.Find("Timeline").GetComponent<PlayableDirector>();
         waypoint = fireCar.GetComponent("Waypoints") as Waypoints;
-
+        timelineTree.Stop();
         fireCar.SetActive(false);
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
@@ -35,6 +38,7 @@ public class FirefighterTracker : MonoBehaviour, ITrackableEventHandler
             waypoint.isAnimating = true;
             mShowGUIButton = true;
             fireCar.SetActive(true);
+            timelineTree.Play();
         }
         else
         {
