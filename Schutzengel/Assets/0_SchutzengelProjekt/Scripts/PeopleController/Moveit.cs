@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moveit : MonoBehaviour {
+public class Moveit: MonoBehaviour {
 
     private Animator animator;
 
